@@ -79,6 +79,20 @@ body {
   position: relative;
 }
 
+.week {
+  display: flex;
+  justify-content: space-between;
+  background: #b5c2d5;
+}
+
+.week div {
+  border: 1px solid #ffffff;
+  padding: 7px 8px;
+  width: 14.28%;
+  color: #434344;
+  cursor: pointer;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

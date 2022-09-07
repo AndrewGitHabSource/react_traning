@@ -15,6 +15,10 @@ function App() {
             "y": 0,
             "drag": false,
             "relation": null,
+            "selected": false,
+            "active": true,
+            "show": true,
+            "date": '07.09.2022',
         },
         {
             "id": 2,
@@ -23,6 +27,10 @@ function App() {
             "y": 200,
             "drag": false,
             "relation": 1,
+            "selected": false,
+            "active": true,
+            "show": true,
+            "date": '07.09.2022',
         },
         {
             "id": 3,
@@ -31,6 +39,10 @@ function App() {
             "y": 450,
             "drag": false,
             "relation": 2,
+            "selected": false,
+            "active": true,
+            "show": true,
+            "date": '07.09.2022',
         },
     ]);
 

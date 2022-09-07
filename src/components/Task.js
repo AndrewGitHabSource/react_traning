@@ -37,14 +37,14 @@ const Task = (props) => {
 
     return (
         <React.Fragment>
-            <div className="task" onMouseDown={mouseDown} onMouseUp={mouseUp}  style={style} id={props.value.id} >
+            <div className="task" onMouseDown={mouseDown} onMouseUp={mouseUp}  style={style} id={props.value.id}>
                 <h3>{ props.value.title }</h3>
             </div>
 
             {(() => {
                 if(props.value.relation) {
                     return (
-                        <Xarrow start={ String(props.value.id)} end={String(props.value.relation)} />
+                        <Xarrow start={String(props.value.id)} end={String(props.value.relation)}/>
                     )
                 }
             })()}
