@@ -1,5 +1,6 @@
 import React from 'react';
 import { TaskContext } from "../context";
+import Xarrow from "react-xarrows";
 
 const Task = (props) => {
     let style;
@@ -35,9 +36,19 @@ const Task = (props) => {
     }
 
     return (
-        <div className="task" onMouseDown={mouseDown} onMouseUp={mouseUp}  style={style}>
-            <h3>{ props.value.title }</h3>
-        </div>
+        <React.Fragment>
+            <div className="task" onMouseDown={mouseDown} onMouseUp={mouseUp}  style={style} id={props.value.id} >
+                <h3>{ props.value.title }</h3>
+            </div>
+
+            {(() => {
+                if(props.value.relation) {
+                    return (
+                        <Xarrow start={ String(props.value.id)} end={String(props.value.relation)} />
+                    )
+                }
+            })()}
+        </React.Fragment>
     );
 }
 

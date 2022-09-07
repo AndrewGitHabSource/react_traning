@@ -2,6 +2,7 @@ import React, {useRef} from 'react';
 import { TaskContext } from "../context";
 import Task from "./Task";
 import { useEffect, useState } from 'react';
+import Xarrow from "react-xarrows";
 
 const Area = () => {
     const context = React.useContext(TaskContext);
@@ -20,7 +21,7 @@ const Area = () => {
         <div className="place" onMouseMove={move} ref={area}>
             {
                 tasks.map((element) => {
-                    return <Task value={element} coords={coords} name="task" key={element.id}/>
+                    return <Task value={element} coords={coords} name="task" key={element.id} />
                 })
             }
         </div>

@@ -24,7 +24,7 @@ const Menu = (props) => {
         <ul className={'menu'} style={MenuStyle} ref={ref}>
             {
                 tasks.map((element) => {
-                    return <li>{element.title}</li>
+                    return <li key={element.id}>{element.title}</li>
                 })
             }
         </ul>

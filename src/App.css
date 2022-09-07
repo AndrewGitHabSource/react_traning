@@ -44,15 +44,19 @@ body {
 }
 
 .menu {
-  background: #84cc16;
+  background: #002a49;
   cursor: pointer;
   padding: 0;
   margin: 0;
 }
 
 .menu li {
-  border-bottom: 1px solid #282c34;
+  border-bottom: 1px solid #fff;
   padding: 10px 20px;
+}
+
+.menu li:first-child {
+  border-top: 1px solid #fff;
 }
 
 .task {
