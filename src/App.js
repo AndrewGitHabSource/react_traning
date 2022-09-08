@@ -18,7 +18,7 @@ function App() {
             "selected": false,
             "active": true,
             "show": true,
-            "date": '07.09.2022',
+            "date": '08.09.2022',
         },
         {
             "id": 2,
@@ -30,7 +30,7 @@ function App() {
             "selected": false,
             "active": true,
             "show": true,
-            "date": '07.09.2022',
+            "date": '08.09.2022',
         },
         {
             "id": 3,
@@ -42,7 +42,19 @@ function App() {
             "selected": false,
             "active": true,
             "show": true,
-            "date": '07.09.2022',
+            "date": '08.09.2022',
+        },
+        {
+            "id": 4,
+            "title": "Complete task #4874",
+            "x": 500,
+            "y": 700,
+            "drag": false,
+            "relation": 2,
+            "selected": false,
+            "active": true,
+            "show": true,
+            "date": '09.09.2022',
         },
     ]);
 
