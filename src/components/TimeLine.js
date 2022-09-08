@@ -22,7 +22,6 @@ const TimeLine = (props) => {
     }
 
     days = rangeDates();
-    console.log(days);
 
     return (
         <div className={'time'}>
@@ -39,7 +38,9 @@ const TimeLine = (props) => {
                     <div className={'days'}>
                         {
                             days.map((day) => {
-                                return <div className={day.isSame(new Date(), "day") ?  'current' : 'day'} key={day.date()}>{day.date()}</div>
+                                return <div className={day.isSame(new Date(), "day") ?  'current' : 'day'} key={day.date()}>
+                                    {day.date()}
+                                </div>
                             })
                         }
                     </div>
