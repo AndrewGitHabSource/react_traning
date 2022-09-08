@@ -39,7 +39,7 @@ body {
 
 .content {
   width: 80%;
-  min-height: 800px;
+  min-height: 1847px;
   background: #EFF1F3;
 }
 
@@ -68,6 +68,7 @@ body {
   position: absolute;
   font: 15px Arial;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+  user-select: none;
 }
 
 .task:nth-child(2) {
@@ -91,6 +92,22 @@ body {
   width: 14.28%;
   color: #434344;
   cursor: pointer;
+}
+
+.days {
+  column-count: 7;
+  column-gap: 0;
+}
+
+.days div {
+  border: 1px solid #fff;
+  color: #196f91;
+  cursor: pointer;
+}
+
+div.current {
+  background: #002a49;
+  color: #fff;
 }
 
 @keyframes App-logo-spin {
