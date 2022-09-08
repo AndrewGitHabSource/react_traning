@@ -14,7 +14,7 @@ function App() {
             "x": 0,
             "y": 0,
             "drag": false,
-            "relation": null,
+            "relation": 3,
             "selected": false,
             "active": true,
             "show": true,

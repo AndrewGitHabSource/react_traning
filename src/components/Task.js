@@ -42,7 +42,7 @@ const Task = (props) => {
             </div>
 
             {(() => {
-                if(props.value.relation) {
+                if(props.value.relation && taskArray.filter(elem => elem.id === props.value.relation).shift().show) {
                     return (
                         <Xarrow start={String(props.value.id)} end={String(props.value.relation)}/>
                     )

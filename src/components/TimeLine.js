@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import moment from "moment";
 import filter from "../helpers/filter";
 import { TaskContext } from "../context";
 
 
-const TimeLine = (props) => {
+const TimeLine = () => {
     const week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
     const { taskArray, setTaskArray } = React.useContext(TaskContext);
     let month = moment().month();
@@ -12,15 +12,11 @@ const TimeLine = (props) => {
     let days = [];
 
     const filterDate = (element) => {
-        let filteredArray = filter({
+        setTaskArray(filter({
             "day": element.target.textContent,
             "month": month,
             "year": year,
-        }, taskArray);
-
-        console.log(filteredArray);
-
-        setTaskArray(filteredArray);
+        }, taskArray));
     }
 
     const rangeDates = () => {

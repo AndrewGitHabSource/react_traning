@@ -1,8 +1,7 @@
-import React, {useRef} from 'react';
+import React, { useRef } from 'react';
 import { TaskContext } from "../context";
 import Task from "./Task";
-import { useEffect, useState } from 'react';
-import Xarrow from "react-xarrows";
+import { useState } from 'react';
 
 const Area = () => {
     const context = React.useContext(TaskContext);
@@ -11,10 +10,17 @@ const Area = () => {
     const area = useRef(null);
 
     const move = (e) => {
-        setCoords({
-            x: e.clientX - area.current.getBoundingClientRect().x,
-            y: e.clientY - area.current.getBoundingClientRect().y,
-        });
+        const space = 20;
+        const areaPositionX = area.current.getBoundingClientRect().x + space;
+        const areaPositionY = area.current.getBoundingClientRect().y + space;
+
+
+        if (e.clientX > areaPositionX && e.clientY > areaPositionY) {
+            setCoords({
+                x: e.clientX - area.current.getBoundingClientRect().x,
+                y: e.clientY - area.current.getBoundingClientRect().y,
+            });
+        }
     }
 
     return (
