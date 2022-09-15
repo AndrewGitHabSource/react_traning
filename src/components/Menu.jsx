@@ -1,6 +1,8 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {TaskContext} from "../context";
 import Task from "./Task";
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const MenuStyle = {
     color: "white",
@@ -11,17 +13,11 @@ const MenuStyle = {
 }
 
 const Menu = (props) => {
-    const ref = useRef(null);
-    const context = React.useContext(TaskContext);
-    let tasks = context.taskArray;
-
-    useEffect(() => {
-
-    }, []);
+    const tasks = useSelector((state) => state.task.tasks);
 
     return (
 
-        <ul className={'menu'} style={MenuStyle} ref={ref}>
+        <ul className={'menu'} style={MenuStyle}>
             {
                 tasks.map((element) => {
                     return <li key={element.id}>{element.title}</li>

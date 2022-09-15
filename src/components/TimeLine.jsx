@@ -2,21 +2,23 @@ import React from 'react';
 import moment from "moment";
 import filter from "../helpers/filter";
 import { TaskContext } from "../context";
+import {useSelector} from "react-redux";
 
 
 const TimeLine = () => {
     const week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-    const { taskArray, setTaskArray } = React.useContext(TaskContext);
+    const taskArray = useSelector((state) => state.task.tasks);
+
     let month = moment().month();
     let year = moment().year();
     let days = [];
 
     const filterDate = (element) => {
-        setTaskArray(filter({
-            "day": element.target.textContent,
-            "month": month,
-            "year": year,
-        }, taskArray));
+        // setTaskArray(filter({
+        //     "day": element.target.textContent,
+        //     "month": month,
+        //     "year": year,
+        // }, taskArray));
     }
 
     const rangeDates = () => {
