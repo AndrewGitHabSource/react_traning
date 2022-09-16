@@ -68,11 +68,11 @@ const taskSlice = createSlice({
             const [day, month, year] = payload;
 
             state.tasks = state.tasks.map((element) => {
-                if (moment({day, month, year}).isSame(moment(moment(element.date, 'DD.MM.YYYY').toDate()), 'day')) {
-                    return {...element, "show": true};
-                } else {
-                    return {...element, "show": false};
-                }
+                return moment({day, month, year}).isSame(moment(moment(element.date,
+                    'DD.MM.YYYY').toDate()),
+                    'day')
+                    ? {...element, "show": true}
+                    : {...element, "show": false};
             });
         }
     },
@@ -80,11 +80,8 @@ const taskSlice = createSlice({
 
 export const getRelation = (state, relation) => {
     const task = state.task.tasks.filter(elem => elem.id === relation);
-    if (task.length) {
-        return task.shift().show;
-    } else {
-        return false;
-    }
+
+    return task.length ? task.shift().show : false;
 };
 
 export const getTaskById = (state, id) => {
