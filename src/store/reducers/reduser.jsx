@@ -61,8 +61,8 @@ const taskSlice = createSlice({
         setDragTaskEnd(state, {payload}) {
             state.tasks.find(element => element.id === payload).drag = false;
         },
-        addTask(state, data) {
-            state.tasks.push(data);
+        addTask(state, {payload}) {
+            state.tasks.push(payload);
         },
         filter(state, {payload}) {
             const [day, month, year] = payload;

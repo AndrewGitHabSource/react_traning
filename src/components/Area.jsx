@@ -13,7 +13,7 @@ const Area = () => {
             e.clientX,
             e.clientY,
             area.current.getBoundingClientRect().x,
-            area.current.getBoundingClientRect().y
+            area.current.getBoundingClientRect().y,
         ]));
     }
 
