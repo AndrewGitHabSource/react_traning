@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { rangeDates } from "../store/reducers/time"
 import { filter } from "../store/reducers/reduser";
 
-
 const TimeLine = () => {
     const dispatch = useDispatch();
     const week = useSelector(state => state.time.week);

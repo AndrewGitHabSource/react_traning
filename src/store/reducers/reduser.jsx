@@ -79,9 +79,9 @@ const taskSlice = createSlice({
 });
 
 export const getRelation = (state, relation) => {
-    const task = state.task.tasks.filter(elem => elem.id === relation);
+    const task = state.task.tasks.find(elem => elem.id === relation);
 
-    return task.length ? task.shift().show : false;
+    return task ? task.show : false;
 };
 
 export const getMouseCoords = (state) => {
