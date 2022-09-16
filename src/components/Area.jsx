@@ -20,9 +20,7 @@ const Area = () => {
     return (
         <div className="place" onMouseMove={move} ref={area}>
             {
-                tasks.map((element) => {
-                    return element.show ? <Task value={element} name="task" key={element.id} /> : '';
-                })
+                tasks.map((element) => element.show ? <Task value={element} name="task" key={element.id} /> : '')
             }
         </div>
     );

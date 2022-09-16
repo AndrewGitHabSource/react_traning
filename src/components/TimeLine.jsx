@@ -16,30 +16,22 @@ const TimeLine = () => {
 
     return (
         <div className={'time'}>
-            {
-                <React.Fragment>
-                    <div className={'week'}>
-                        {
-                            week.map((item) => {
-                                return <div key={item}>{item}</div>
-                            })
-                        }
-                    </div>
+            <div className={'week'}>
+                {
+                    week.map((item) => <div key={item}>{item}</div>)
+                }
+            </div>
 
-                    <div className={'days'}>
-                        {
-                            days.map((day, index) => {
-                                return <div
-                                    className={day.isSame(new Date(), "day") ?  'current' : 'day'}
-                                    key={index}
-                                    onClick={filterTasks}>
-                                    {day.date()}
-                                </div>
-                            })
-                        }
-                    </div>
-                </React.Fragment>
-            }
+            <div className={'days'}>
+                {
+                    days.map(
+                        (day, index) =>
+                        <div className={day.isSame(new Date(), "day") ?  'current' : 'day'} key={index} onClick={filterTasks}>
+                            {day.date()}
+                        </div>
+                    )
+                }
+            </div>
         </div>
     );
 }

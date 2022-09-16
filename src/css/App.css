@@ -3,6 +3,14 @@
   background-color: #282c34;
 }
 
+.menu {
+  color: #fff;
+  font-size: 19px;
+  list-style: none;
+  text-align: left;
+  width: 30%;
+}
+
 .App-logo {
   height: 40px;
   pointer-events: none;
