@@ -8,7 +8,6 @@ export function useDragTask(props) {
     let [x, y, start] = useSelector((state) => getTaskCoordsById(state, props.value.id));
     let [mouseX, mouseY] = useSelector((state) => getMouseCoords(state));
 
-
     const mouseDownTask = () => {
         start = true;
         dispatch(setDragTaskStart(props.value.id));

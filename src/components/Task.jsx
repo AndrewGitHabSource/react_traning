@@ -1,9 +1,5 @@
 import React from 'react';
 import Xarrow from "react-xarrows";
-import { useSelector } from "react-redux";
-import { getRelation } from "../store/reducers/reduser";
-import { useDispatch } from "react-redux";
-import { setDragTaskStart, setDragTaskEnd, setCoordsTask } from "../store/reducers/reduser";
 import { useDragTask } from "../hooks/dragTask";
 
 const Task = (props) => {
