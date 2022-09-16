@@ -84,10 +84,6 @@ export const getRelation = (state, relation) => {
     return task.length ? task.shift().show : false;
 };
 
-export const getTaskById = (state, id) => {
-    return state.task.tasks.filter(elem => elem.id === id);
-};
-
 export const getMouseCoords = (state) => {
     const coords = state.task.coords;
 
