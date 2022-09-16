@@ -1,6 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import moment from "moment";
 
+const space = 40;
+
 const initialState = {
     coords: [{ x: 0, y: 0 }],
     tasks: [
@@ -51,8 +53,8 @@ const taskSlice = createSlice({
         setCoordsTask(state, {payload}) {
             const [id, x, y] = payload;
 
-            state.tasks.filter(element => element.id === id).shift().x = x;
-            state.tasks.filter(element => element.id === id).shift().y = y;
+            state.tasks.filter(element => element.id === id).shift().x = x - space;
+            state.tasks.filter(element => element.id === id).shift().y = y - space;
         },
         setDragTaskStart(state, {payload}) {
             state.tasks.filter(element => element.id === payload).shift().drag = true;
@@ -66,7 +68,7 @@ const taskSlice = createSlice({
         filter(state, {payload}) {
             const [day, month, year] = payload;
 
-            state.tasks.map((element) => {
+            state.tasks = state.tasks.map((element) => {
                 if (moment({day, month, year}).isSame(moment(moment(element.date, 'DD.MM.YYYY').toDate()), 'day')) {
                     return {...element, "show": true};
                 } else {
@@ -90,16 +92,24 @@ export const getTaskById = (state, id) => {
     return state.task.tasks.filter(elem => elem.id === id);
 };
 
-export const getTaskCoordsById = (state, id) => {
-    const task = state.task.tasks.filter(elem => elem.id === id).shift();
-
-    return [task.x, task.y, task.drag];
-};
-
 export const getMouseCoords = (state) => {
     const coords = state.task.coords;
 
     return [coords.x, coords.y];
+};
+
+export const calculateCoords = (state, id) => {
+    const task = state.task.tasks.filter(elem => elem.id === id).shift();
+    let x = task.x;
+    let y = task.y;
+
+    if (task.drag === true) {
+        x = state.task.coords.x - space;
+        y = state.task.coords.y - space;
+
+    }
+
+    return [x, y];
 };
 
 export const { addTask, editTask, moveTask, setDragTaskStart, setDragTaskEnd, setCoordsTask, filter } = taskSlice.actions;
