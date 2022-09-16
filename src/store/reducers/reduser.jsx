@@ -52,14 +52,14 @@ const taskSlice = createSlice({
         setCoordsTask(state, {payload}) {
             const [id, x, y] = payload;
 
-            state.tasks.filter(element => element.id === id).shift().x = x - WTF_THE_SPACE;
-            state.tasks.filter(element => element.id === id).shift().y = y - WTF_THE_SPACE;
+            state.tasks.find(element => element.id === id).x = x - WTF_THE_SPACE;
+            state.tasks.find(element => element.id === id).y = y - WTF_THE_SPACE;
         },
         setDragTaskStart(state, {payload}) {
-            state.tasks.filter(element => element.id === payload).shift().drag = true;
+            state.tasks.find(element => element.id === payload).drag = true;
         },
         setDragTaskEnd(state, {payload}) {
-            state.tasks.filter(element => element.id === payload).shift().drag = false;
+            state.tasks.find(element => element.id === payload).drag = false;
         },
         addTask(state, data) {
             state.tasks.push(data);
