@@ -68,14 +68,9 @@ const taskSlice = createSlice({
 
         filter(state, {payload}) {
             const [day, month, year] = payload;
-            const date = {
-                day,
-                month,
-                year,
-            }
 
             state.tasks = state.tasks.map((element) => {
-                if (moment(date).isSame(moment(moment(element.date, 'DD.MM.YYYY').toDate()), 'day')) {
+                if (moment({day, month, year}).isSame(moment(moment(element.date, 'DD.MM.YYYY').toDate()), 'day')) {
                     return {...element, "show": true};
                 } else {
                     return {...element, "show": false};
