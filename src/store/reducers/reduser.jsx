@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import moment from "moment";
 
-const space = 40;
+const WTF_THE_SPACE = 40;
 
 const initialState = {
     coords: [{ x: 0, y: 0 }],
@@ -39,9 +39,8 @@ const taskSlice = createSlice({
     reducers: {
         moveTask(state, {payload}) {
             const [clientX, clientY, mousePositionX, mousePositionY] = payload;
-            const space = 20;
-            const areaPositionX = mousePositionX + space;
-            const areaPositionY = mousePositionY + space;
+            const areaPositionX = mousePositionX + WTF_THE_SPACE;
+            const areaPositionY = mousePositionY + WTF_THE_SPACE;
 
             if (clientX > areaPositionX && clientY > areaPositionY) {
                 state.coords = {
@@ -53,8 +52,8 @@ const taskSlice = createSlice({
         setCoordsTask(state, {payload}) {
             const [id, x, y] = payload;
 
-            state.tasks.filter(element => element.id === id).shift().x = x - space;
-            state.tasks.filter(element => element.id === id).shift().y = y - space;
+            state.tasks.filter(element => element.id === id).shift().x = x - WTF_THE_SPACE;
+            state.tasks.filter(element => element.id === id).shift().y = y - WTF_THE_SPACE;
         },
         setDragTaskStart(state, {payload}) {
             state.tasks.filter(element => element.id === payload).shift().drag = true;
@@ -99,17 +98,12 @@ export const getMouseCoords = (state) => {
 };
 
 export const calculateCoords = (state, id) => {
-    const task = state.task.tasks.filter(elem => elem.id === id).shift();
-    let x = task.x;
-    let y = task.y;
+    const task = state.task.tasks.find(elem => elem.id === id);
 
-    if (task.drag === true) {
-        x = state.task.coords.x - space;
-        y = state.task.coords.y - space;
-
-    }
-
-    return [x, y];
+    return [
+        task.drag === true ? state.task.coords.x - WTF_THE_SPACE : task.x,
+        task.drag === true ? state.task.coords.y - WTF_THE_SPACE : task.y
+    ];
 };
 
 export const { addTask, editTask, moveTask, setDragTaskStart, setDragTaskEnd, setCoordsTask, filter } = taskSlice.actions;
