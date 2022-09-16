@@ -3,7 +3,7 @@ import Xarrow from "react-xarrows";
 import { useDragTask } from "../hooks/dragTask";
 
 const Task = (props) => {
-    const {x, y, show, mouseDownTask, mouseUpTask } = useDragTask(props);
+    const {x, y, show, mouseDownTask, mouseUpTask} = useDragTask(props);
 
     const mouseDown = () => {
         mouseDownTask();

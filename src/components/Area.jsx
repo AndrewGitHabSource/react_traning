@@ -10,7 +10,8 @@ const Area = () => {
 
     const move = (e) => {
         dispatch(moveTask([
-            e.clientX, e.clientY,
+            e.clientX,
+            e.clientY,
             area.current.getBoundingClientRect().x,
             area.current.getBoundingClientRect().y
         ]));
