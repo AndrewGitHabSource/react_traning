@@ -6,8 +6,8 @@ import { filter } from "../store/reducers/reduser";
 
 
 const TimeLine = () => {
-    const week = useSelector(state => state.time.week);
     const dispatch = useDispatch();
+    const week = useSelector(state => state.time.week);
     let days = useSelector(rangeDates);
 
     const filterTasks = (element) => {
