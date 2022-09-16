@@ -6,7 +6,6 @@ import { moveTask } from "../store/reducers/reduser";
 const Area = () => {
     const tasks = useSelector((state) => state.task.tasks);
     const dispatch = useDispatch();
-    const coords = useSelector((state) => state.task.coords);
     const area = useRef(null);
 
     const move = (e) => {
