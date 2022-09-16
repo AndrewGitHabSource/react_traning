@@ -1,40 +1,18 @@
 import React from 'react';
 import moment from "moment";
-import filter from "../helpers/filter";
-import { TaskContext } from "../context";
-import {useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { rangeDates } from "../store/reducers/time"
+import { filter } from "../store/reducers/reduser";
 
 
 const TimeLine = () => {
-    const week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-    const taskArray = useSelector((state) => state.task.tasks);
+    const week = useSelector(state => state.time.week);
+    const dispatch = useDispatch();
+    let days = useSelector(rangeDates);
 
-    let month = moment().month();
-    let year = moment().year();
-    let days = [];
-
-    const filterDate = (element) => {
-        // setTaskArray(filter({
-        //     "day": element.target.textContent,
-        //     "month": month,
-        //     "year": year,
-        // }, taskArray));
+    const filterTasks = (element) => {
+        dispatch(filter([element.target.textContent, moment().month(), moment().year()]));
     }
-
-    const rangeDates = () => {
-        let range = [];
-        const weekStart = moment().startOf('month').startOf('isoWeek');
-        const weekEnd = moment().endOf('month').endOf('isoWeek');
-        let diff = weekEnd.diff(weekStart, 'days')
-
-        for (let i = 0; i < diff; i++) {
-            range.push(moment(weekStart).add(i, 'days'))
-        }
-
-        return range;
-    }
-
-    days = rangeDates();
 
     return (
         <div className={'time'}>
@@ -54,7 +32,7 @@ const TimeLine = () => {
                                 return <div
                                     className={day.isSame(new Date(), "day") ?  'current' : 'day'}
                                     key={index}
-                                    onClick={filterDate}>
+                                    onClick={filterTasks}>
                                     {day.date()}
                                 </div>
                             })

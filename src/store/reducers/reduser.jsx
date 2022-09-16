@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import moment from "moment";
 
 const initialState = {
     coords: [{ x: 0, y: 0 }],
@@ -13,7 +14,7 @@ const initialState = {
             "selected": false,
             "active": true,
             "show": true,
-            "date": '08.09.2022',
+            "date": '16.09.2022',
         },
         {
             "id": 2,
@@ -25,7 +26,7 @@ const initialState = {
             "selected": false,
             "active": true,
             "show": true,
-            "date": '08.09.2022',
+            "date": '16.09.2022',
         },
     ],
 }
@@ -50,9 +51,6 @@ const taskSlice = createSlice({
 
         setCoordsTask(state, {payload}) {
             const [id, x, y] = payload;
-            console.log(id);
-            console.log(x);
-            console.log(y);
 
             state.tasks.filter(element => element.id === id).shift().x = x;
             state.tasks.filter(element => element.id === id).shift().y = y;
@@ -67,6 +65,16 @@ const taskSlice = createSlice({
         addTask(state, user) {
             state.tasks.push(user);
         },
+
+        filter(state, payload) {
+            state.tasks = state.tasks.map((element) => {
+                if (moment(payload).isSame(moment(moment(element.date, 'DD.MM.YYYY').toDate()), 'day')) {
+                    return {...element, "show": true};
+                } else {
+                    return {...element, "show": false};
+                }
+            });
+        }
     },
 });
 
@@ -83,5 +91,5 @@ export const getTaskById = (state, id) => {
     return state.task.tasks.filter(elem => elem.id === id);
 };
 
-export const { addTask, editTask, moveTask, setDragTaskStart, setDragTaskEnd, setCoordsTask } = taskSlice.actions;
+export const { addTask, editTask, moveTask, setDragTaskStart, setDragTaskEnd, setCoordsTask, filter } = taskSlice.actions;
 export const taskReducer = taskSlice.reducer;
