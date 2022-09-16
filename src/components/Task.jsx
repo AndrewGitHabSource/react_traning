@@ -1,37 +1,23 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Xarrow from "react-xarrows";
 import { useSelector } from "react-redux";
 import { getRelation } from "../store/reducers/reduser";
 import { useDispatch } from "react-redux";
 import { setDragTaskStart, setDragTaskEnd, setCoordsTask } from "../store/reducers/reduser";
+import { useDragTask } from "../hooks/dragTask";
 
 const Task = (props) => {
-    const space = 40;
-    const dispatch = useDispatch();
-    const show = useSelector((state) => getRelation(state, props.value.relation));
-    let style;
+    const {x, y, show, mouseDownTask, mouseUpTask } = useDragTask(props);
 
-    let start = props.value.drag;
-    let x = props.value.x;
-    let y = props.value.y;
-
-    const mouseDown = (event) => {
-        start = true;
-        dispatch(setDragTaskStart(props.value.id));
+    const mouseDown = () => {
+        mouseDownTask();
     }
 
-    const mouseUp = (event) => {
-        dispatch(setDragTaskEnd(props.value.id));
-        dispatch(setCoordsTask([props.value.id, props.coords.x - space, props.coords.y - space]));
-        start = false;
+    const mouseUp = () => {
+        mouseUpTask();
     }
 
-    if (start === true) {
-        x = props.coords.x - space;
-        y = props.coords.y - space;
-    }
-
-    style = {
+    let style = {
         left: x + 'px',
         top: y + 'px',
     }

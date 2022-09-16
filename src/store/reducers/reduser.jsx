@@ -48,14 +48,12 @@ const taskSlice = createSlice({
                 }
             }
         },
-
         setCoordsTask(state, {payload}) {
             const [id, x, y] = payload;
 
             state.tasks.filter(element => element.id === id).shift().x = x;
             state.tasks.filter(element => element.id === id).shift().y = y;
         },
-
         setDragTaskStart(state, {payload}) {
             state.tasks.filter(element => element.id === payload).shift().drag = true;
         },
@@ -65,7 +63,6 @@ const taskSlice = createSlice({
         addTask(state, user) {
             state.tasks.push(user);
         },
-
         filter(state, {payload}) {
             const [day, month, year] = payload;
 
@@ -91,6 +88,18 @@ export const getRelation = (state, relation) => {
 
 export const getTaskById = (state, id) => {
     return state.task.tasks.filter(elem => elem.id === id);
+};
+
+export const getTaskCoordsById = (state, id) => {
+    const task = state.task.tasks.filter(elem => elem.id === id).shift();
+
+    return [task.x, task.y, task.drag];
+};
+
+export const getMouseCoords = (state) => {
+    const coords = state.task.coords;
+
+    return [coords.x, coords.y];
 };
 
 export const { addTask, editTask, moveTask, setDragTaskStart, setDragTaskEnd, setCoordsTask, filter } = taskSlice.actions;
