@@ -16,7 +16,7 @@ export const rangeDates = () => {
     let range = [];
     const weekStart = moment().startOf('month').startOf('isoWeek');
     const weekEnd = moment().endOf('month').endOf('isoWeek');
-    let diff = weekEnd.diff(weekStart, 'days')
+    const diff = weekEnd.diff(weekStart, 'days')
 
     for (let i = 0; i < diff; i++) {
         range.push(moment(weekStart).add(i, 'days'))

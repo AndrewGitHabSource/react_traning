@@ -23,12 +23,10 @@ const TimeLine = () => {
 
             <div className={'days'}>
                 {
-                    days.map(
-                        (day, index) =>
+                    days.map((day, index) =>
                         <div className={day.isSame(new Date(), "day") ?  'current' : 'day'} key={index} onClick={filterTasks}>
                             {day.date()}
-                        </div>
-                    )
+                        </div>)
                 }
             </div>
         </div>
