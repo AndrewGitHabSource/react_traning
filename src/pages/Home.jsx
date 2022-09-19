@@ -1,5 +1,4 @@
 import logo from '../logo.svg';
-import { useState } from "react";
 import Area from "../components/Area";
 import TimeLine from "../components/TimeLine";
 import Menu from "../components/Menu";
