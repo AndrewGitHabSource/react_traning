@@ -7,7 +7,7 @@ import { filter } from "../store/reducers/reduser";
 const TimeLine = () => {
     const dispatch = useDispatch();
     const week = useSelector(state => state.time.week);
-    let days = useSelector(rangeDates);
+    const days = useSelector(rangeDates);
 
     const filterTasks = (element) => {
         dispatch(filter([element.target.textContent, moment().month(), moment().year()]));

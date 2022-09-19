@@ -16,7 +16,7 @@ const initialState = {
             "selected": false,
             "active": true,
             "show": true,
-            "date": '16.09.2022',
+            "date": '19.09.2022',
         },
         {
             "id": 2,
@@ -28,7 +28,7 @@ const initialState = {
             "selected": false,
             "active": true,
             "show": true,
-            "date": '16.09.2022',
+            "date": '19.09.2022',
         },
     ],
 }
