@@ -1,20 +1,15 @@
 import React, { useRef } from 'react';
 import Task from "./Task";
-import { useSelector, useDispatch } from "react-redux";
-import { moveTask } from "../store/reducers/reduser";
+import { useTasksStateManager } from "../hooks/tasksStateManager";
+import { TaskContext } from "../context";
 
 const Area = () => {
-    const tasks = useSelector((state) => state.task.tasks);
-    const dispatch = useDispatch();
+    const {tasks} = React.useContext(TaskContext);
     const area = useRef(null);
+    const {moveTask} = useTasksStateManager();
 
     const move = (e) => {
-        dispatch(moveTask([
-            e.clientX,
-            e.clientY,
-            area.current.getBoundingClientRect().x,
-            area.current.getBoundingClientRect().y,
-        ]));
+        moveTask(e.clientX, e.clientY, area.current.getBoundingClientRect().x, area.current.getBoundingClientRect().y);
     }
 
     return (

@@ -1,16 +1,16 @@
 import React from 'react';
 import moment from "moment";
-import { useDispatch, useSelector } from "react-redux";
-import { rangeDates } from "../store/reducers/time"
-import { filter } from "../store/reducers/reduser";
+import { useDateTime } from "../hooks/time";
+import { useTasksStateManager } from "../hooks/tasksStateManager";
 
 const TimeLine = () => {
-    const dispatch = useDispatch();
-    const week = useSelector(state => state.time.week);
-    const days = useSelector(rangeDates);
+    const {week, rangeDates} = useDateTime();
+    const {filter} = useTasksStateManager();
+
+    const days = rangeDates();
 
     const filterTasks = (element) => {
-        dispatch(filter([element.target.textContent, moment().month(), moment().year()]));
+        filter(element.target.textContent, moment().month(), moment().year());
     }
 
     return (

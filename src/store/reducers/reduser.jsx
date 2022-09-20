@@ -40,7 +40,7 @@ const initialState = {
             "selected": false,
             "active": true,
             "show": true,
-            "date": '19.09.2022',
+            "date": '18.09.2022',
         },
     ],
 }

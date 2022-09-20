@@ -1,24 +1,20 @@
-import {useDispatch, useSelector} from "react-redux";
-import {getRelation,
-        setCoordsTask,
-        setDragTaskEnd,
-        setDragTaskStart,
-        getMouseCoords,
-        calculateCoords} from "../store/reducers/reduser";
+import { useTasksStateManager } from "./tasksStateManager";
+import React from "react";
+import { TaskContext } from "../context";
 
 export function useDragTask(props) {
-    const dispatch = useDispatch();
-    const show = useSelector((state) => getRelation(state, props.value.relation));
-    const [mouseX, mouseY] = useSelector((state) => getMouseCoords(state));
-    const [x, y] = useSelector((state) => calculateCoords(state, props.value.id));
+    const {getRelation, calculateCoords, setDragTaskStart, setDragTaskEnd, setCoordsTask} = useTasksStateManager();
+    const {coords} = React.useContext(TaskContext);
+    const show = getRelation(props.value.relation);
+    const [x, y] = calculateCoords(props.value.id);
 
     const mouseDownTask = () => {
-        dispatch(setDragTaskStart(props.value.id));
+        setDragTaskStart(props.value.id);
     }
 
     const mouseUpTask = () => {
-        dispatch(setDragTaskEnd(props.value.id));
-        dispatch(setCoordsTask([props.value.id, mouseX, mouseY]));
+        setDragTaskEnd(props.value.id);
+        setCoordsTask(props.value.id, coords.x, coords.y);
     }
 
     return {
