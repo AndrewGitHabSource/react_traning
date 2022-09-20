@@ -61,7 +61,6 @@ export function useTasksStateManager(props) {
         });
 
         setTasks(filteredTasks);
-        // console.log(filteredTasks);
     }
 
     return {
