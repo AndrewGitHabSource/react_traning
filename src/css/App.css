@@ -108,13 +108,15 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
+  box-sizing: border-box;
 }
 
 .days div {
   border: 1px solid #fff;
   color: #196f91;
   cursor: pointer;
-  width: 14.12%;
+  width: 14.28%;
+  box-sizing: border-box;
 }
 
 div.current {
